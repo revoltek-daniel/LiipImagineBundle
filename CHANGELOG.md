@@ -15,8 +15,14 @@ for a given releases. Unreleased, upcoming changes will be updated here periodic
 
 # 2.x
 
+## [2.12.3](https://github.com/liip/LiipImagineBundle/tree/2.12.3)
+
+- Add alias for `Imagine\Image\ImagineInterface` to help autowiring.
+
 ## [2.12.2](https://github.com/liip/LiipImagineBundle/tree/2.12.2)
 
+- Autoconfigure tags `'liip_imagine.filter.loader`, `liip_imagine.filter.post_processor` and `liip_imagine.binary.loader`
+  and allow to specify these by class name in addition to service names ([homersimpsons](https://github.com/liip/LiipImagineBundle/pull/1486))
 - Avoid PHP 8.3 warning with default empty prefix ([simonberger](https://github.com/liip/LiipImagineBundle/pull/1568))
 
 ## [2.12.1](https://github.com/liip/LiipImagineBundle/tree/2.12.1)
