@@ -25,15 +25,18 @@ final class LazyFilterRuntime implements RuntimeExtensionInterface
     private ?string $assetVersion;
 
     /**
-     * @var array|null
+     * @var array<string, string>|null
      */
     private $jsonManifest;
 
     /**
-     * @var array|null
+     * @var array<string, string>|null
      */
     private $jsonManifestLookup;
 
+    /**
+     * @param array<string, string>|null $jsonManifest
+     */
     public function __construct(CacheManager $cache, ?string $assetVersion = null, ?array $jsonManifest = null)
     {
         $this->cache = $cache;
@@ -126,6 +129,8 @@ final class LazyFilterRuntime implements RuntimeExtensionInterface
 
     /**
      * Capture the versioning string from the versioned filename
+     *
+     * @return array{version: string, position: int}
      */
     private function captureVersion(string $originalFilename, string $versionedFilename): array
     {
