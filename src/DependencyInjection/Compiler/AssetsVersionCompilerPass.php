@@ -68,6 +68,11 @@ class AssetsVersionCompilerPass extends AbstractCompilerPass
         $runtimeDefinition->setArgument(1, $version);
 
         if (is_a($versionStrategyDefinition->getClass(), JsonManifestVersionStrategy::class, true)) {
+            if (!file_exists($version)) {
+                $this->log($container, 'The manifest file at "'.$version.'" does not yet exist');
+
+                return;
+            }
             $jsonManifestString = file_get_contents($version);
 
             if (!\is_string($jsonManifestString)) {
