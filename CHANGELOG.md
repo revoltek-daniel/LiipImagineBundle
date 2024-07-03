@@ -6,13 +6,17 @@ for a given releases. Unreleased, upcoming changes will be updated here periodic
 
 # 2.x
 
+## [2.13.1](https://github.com/liip/LiipImagineBundle/tree/2.13.1)
+
+- Fix Json Manifest handling when manifest file does not exist yet ([AirBair](https://github.com/liip/LiipImagineBundle/pull/1600))
+
 ## [2.13.0](https://github.com/liip/LiipImagineBundle/tree/2.13.0)
 
-- Support JsonManifestVersionStrategy that was added in Symfony 6.
+- Support JsonManifestVersionStrategy that was added in Symfony 6 ([wouterSkepp](https://github.com/liip/LiipImagineBundle/pull/1529)).
 
 ## [2.12.3](https://github.com/liip/LiipImagineBundle/tree/2.12.3)
 
-- Add alias for `Imagine\Image\ImagineInterface` to help autowiring.
+- Add alias for `Imagine\Image\ImagineInterface` to help autowiring ([dbu](https://github.com/liip/LiipImagineBundle/pull/1583)). 
 
 ## [2.12.2](https://github.com/liip/LiipImagineBundle/tree/2.12.2)
 
