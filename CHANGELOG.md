@@ -15,6 +15,10 @@ for a given releases. Unreleased, upcoming changes will be updated here periodic
 
 # 2.x
 
+## [2.13.2](https://github.com/liip/LiipImagineBundle/tree/2.13.2)
+
+- Remove deprecated spaceless filter from twig template ([JohJohan](https://github.com/liip/LiipImagineBundle/pull/1609))
+
 ## [2.13.1](https://github.com/liip/LiipImagineBundle/tree/2.13.1)
 
 - Fix Json Manifest handling when manifest file does not exist yet ([AirBair](https://github.com/liip/LiipImagineBundle/pull/1600))

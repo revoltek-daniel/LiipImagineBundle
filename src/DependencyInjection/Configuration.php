@@ -150,8 +150,8 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('controller')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('filter_action')->defaultValue(sprintf('%s::filterAction', ImagineController::class))->end()
-                        ->scalarNode('filter_runtime_action')->defaultValue(sprintf('%s::filterRuntimeAction', ImagineController::class))->end()
+                        ->scalarNode('filter_action')->defaultValue(\sprintf('%s::filterAction', ImagineController::class))->end()
+                        ->scalarNode('filter_runtime_action')->defaultValue(\sprintf('%s::filterRuntimeAction', ImagineController::class))->end()
                         ->integerNode('redirect_response_code')->defaultValue(302)
                             ->validate()
                                 ->ifTrue(function ($redirectResponseCode) {

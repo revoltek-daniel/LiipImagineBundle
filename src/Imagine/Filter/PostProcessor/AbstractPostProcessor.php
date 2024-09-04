@@ -96,7 +96,7 @@ abstract class AbstractPostProcessor implements PostProcessorInterface
         }
 
         if (false === $file = @tempnam($root, $prefix ?: 'post-processor')) {
-            throw new \RuntimeException(sprintf('Temporary file cannot be created in "%s"', $root));
+            throw new \RuntimeException(\sprintf('Temporary file cannot be created in "%s"', $root));
         }
 
         return $file;

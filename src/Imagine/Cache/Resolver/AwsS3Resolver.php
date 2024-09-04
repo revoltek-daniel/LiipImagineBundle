@@ -110,7 +110,7 @@ class AwsS3Resolver implements ResolverInterface
 
         if (empty($paths)) {
             try {
-                $this->storage->deleteMatchingObjects($this->bucket, '', sprintf(
+                $this->storage->deleteMatchingObjects($this->bucket, '', \sprintf(
                     '/%s/i',
                     implode('|', $filters)
                 ));
@@ -198,8 +198,8 @@ class AwsS3Resolver implements ResolverInterface
     protected function getObjectPath(string $path, string $filter): string
     {
         $path = $this->cachePrefix
-            ? sprintf('%s/%s/%s', $this->cachePrefix, $filter, $path)
-            : sprintf('%s/%s', $filter, $path);
+            ? \sprintf('%s/%s/%s', $this->cachePrefix, $filter, $path)
+            : \sprintf('%s/%s', $filter, $path);
 
         return str_replace('//', '/', $path);
     }

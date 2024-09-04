@@ -21,7 +21,7 @@ class FileSystemLoaderFactory extends AbstractLoaderFactory
 {
     public function create(ContainerBuilder $container, string $name, array $config): string
     {
-        $locatorDefinition = new ChildDefinition(sprintf('liip_imagine.binary.locator.%s', $config['locator']));
+        $locatorDefinition = new ChildDefinition(\sprintf('liip_imagine.binary.locator.%s', $config['locator']));
         $locatorDefinition->replaceArgument(0, $this->resolveDataRoots($config['data_root'], $config['bundle_resources'], $container));
         $locatorDefinition->replaceArgument(1, $config['allow_unresolvable_data_roots']);
 
@@ -148,7 +148,7 @@ class FileSystemLoaderFactory extends AbstractLoaderFactory
             try {
                 $r = new \ReflectionClass($c);
             } catch (\ReflectionException $exception) {
-                throw new InvalidArgumentException(sprintf('Unable to resolve bundle "%s" while auto-registering bundle resource paths.', $c), $exception->getCode(), $exception);
+                throw new InvalidArgumentException(\sprintf('Unable to resolve bundle "%s" while auto-registering bundle resource paths.', $c), $exception->getCode(), $exception);
             }
 
             $paths[$r->getShortName()] = \dirname($r->getFileName());

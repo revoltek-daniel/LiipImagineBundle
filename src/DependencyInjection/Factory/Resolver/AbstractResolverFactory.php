@@ -19,6 +19,6 @@ abstract class AbstractResolverFactory implements ResolverFactoryInterface
 
     final protected function getChildResolverDefinition(?string $name = null): ChildDefinition
     {
-        return new ChildDefinition(sprintf('%s.prototype.%s', static::$namePrefix, $name ?: $this->getName()));
+        return new ChildDefinition(\sprintf('%s.prototype.%s', static::$namePrefix, $name ?: $this->getName()));
     }
 }

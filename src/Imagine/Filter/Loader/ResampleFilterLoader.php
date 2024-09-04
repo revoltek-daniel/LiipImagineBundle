@@ -54,7 +54,7 @@ class ResampleFilterLoader implements LoaderInterface
     private function getTemporaryFile(string $path): string
     {
         if (!is_dir($path) || false === $file = tempnam($path, 'liip-imagine-bundle')) {
-            throw new \RuntimeException(sprintf('Unable to create temporary file in "%s" base path.', $path));
+            throw new \RuntimeException(\sprintf('Unable to create temporary file in "%s" base path.', $path));
         }
 
         return $file;
@@ -106,7 +106,7 @@ class ResampleFilterLoader implements LoaderInterface
 
         $resolver->setNormalizer('filter', function (Options $options, $value) {
             foreach (['\Imagine\Image\ImageInterface::FILTER_%s', '\Imagine\Image\ImageInterface::%s', '%s'] as $format) {
-                if (\defined($constant = sprintf($format, mb_strtoupper($value))) || \defined($constant = sprintf($format, $value))) {
+                if (\defined($constant = \sprintf($format, mb_strtoupper($value))) || \defined($constant = \sprintf($format, $value))) {
                     return \constant($constant);
                 }
             }
@@ -117,7 +117,7 @@ class ResampleFilterLoader implements LoaderInterface
         try {
             return $resolver->resolve($options);
         } catch (ExceptionInterface $exception) {
-            throw new InvalidArgumentException(sprintf('Invalid option(s) passed to %s::load().', __CLASS__), $exception->getCode(), $exception);
+            throw new InvalidArgumentException(\sprintf('Invalid option(s) passed to %s::load().', __CLASS__), $exception->getCode(), $exception);
         }
     }
 }

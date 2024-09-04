@@ -150,7 +150,7 @@ class CacheManager
     public function resolve(string $path, string $filter, ?string $resolver = null): string
     {
         if (false !== mb_strpos($path, '/../') || 0 === mb_strpos($path, '../')) {
-            throw new NotFoundHttpException(sprintf("Source image was searched with '%s' outside of the defined root path", $path));
+            throw new NotFoundHttpException(\sprintf("Source image was searched with '%s' outside of the defined root path", $path));
         }
 
         $preEvent = new CacheResolveEvent($path, $filter);
@@ -221,7 +221,7 @@ class CacheManager
         }
 
         if (!\array_key_exists($resolverName, $this->resolvers)) {
-            throw new \OutOfBoundsException(sprintf('Could not find resolver "%s" for "%s" filter type', $resolverName, $filter));
+            throw new \OutOfBoundsException(\sprintf('Could not find resolver "%s" for "%s" filter type', $resolverName, $filter));
         }
 
         return $this->resolvers[$resolverName];

@@ -38,7 +38,7 @@ class ImagineController
         FilterService $filterService,
         DataManager $dataManager,
         SignerInterface $signer,
-        ?ControllerConfig $controllerConfig
+        ControllerConfig $controllerConfig
     ) {
         $this->filterService = $filterService;
         $this->dataManager = $dataManager;
@@ -89,7 +89,7 @@ class ImagineController
         $runtimeConfig = $request->query->all('filters');
 
         if (true !== $this->signer->check($hash, $path, $runtimeConfig)) {
-            throw new BadRequestHttpException(sprintf('Signed url does not pass the sign check for path "%s" and filter "%s" and runtime config %s', $path, $filter, json_encode($runtimeConfig)));
+            throw new BadRequestHttpException(\sprintf('Signed url does not pass the sign check for path "%s" and filter "%s" and runtime config %s', $path, $filter, json_encode($runtimeConfig)));
         }
 
         return $this->createRedirectResponse(function () use ($path, $filter, $runtimeConfig, $resolver, $request) {
@@ -112,11 +112,11 @@ class ImagineController
                 return new RedirectResponse($this->dataManager->getDefaultImageUrl($filter));
             }
 
-            throw new NotFoundHttpException(sprintf('Source image for path "%s" could not be found', $path), $exception);
+            throw new NotFoundHttpException(\sprintf('Source image for path "%s" could not be found', $path), $exception);
         } catch (NonExistingFilterException $exception) {
-            throw new NotFoundHttpException(sprintf('Requested non-existing filter "%s"', $filter), $exception);
+            throw new NotFoundHttpException(\sprintf('Requested non-existing filter "%s"', $filter), $exception);
         } catch (RuntimeException $exception) {
-            throw new \RuntimeException(vsprintf('Unable to create image for path "%s" and filter "%s". Message was "%s"', [$hash ? sprintf('%s/%s', $hash, $path) : $path, $filter, $exception->getMessage()]), 0, $exception);
+            throw new \RuntimeException(vsprintf('Unable to create image for path "%s" and filter "%s". Message was "%s"', [$hash ? \sprintf('%s/%s', $hash, $path) : $path, $filter, $exception->getMessage()]), 0, $exception);
         }
     }
 
