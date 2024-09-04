@@ -32,7 +32,7 @@ final class Thumbnail extends FilterAbstract
         Size $size,
         ?string $mode = null,
         ?bool $allowUpscale = null,
-        ?string $filter = null
+        ?string $filter = null,
     ) {
         $this->size = $size;
         $this->mode = $mode;

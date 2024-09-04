@@ -84,13 +84,13 @@ class ImagineStyleTest extends AbstractTest
         $style->newline($newlineCount);
         $style->text($separator);
 
-        $this->assertStringContainsString(sprintf('%1$s%2$s%1$s', $separator, str_repeat(PHP_EOL, $newlineCount)), $output->getBuffer());
+        $this->assertStringContainsString(\sprintf('%1$s%2$s%1$s', $separator, str_repeat(PHP_EOL, $newlineCount)), $output->getBuffer());
     }
 
     public static function provideNewlineData(): \Generator
     {
         for ($i = 0; $i <= 200; $i += 50) {
-            yield [$i, sprintf('[abcdef0123-%d]', $i)];
+            yield [$i, \sprintf('[abcdef0123-%d]', $i)];
         }
     }
 
@@ -104,15 +104,15 @@ class ImagineStyleTest extends AbstractTest
 
         if ($decoration) {
             if ($type) {
-                $expected = sprintf('<fg=%s;bg=%s> [%s] %s', 'white', 'cyan', $type, $title);
+                $expected = \sprintf('<fg=%s;bg=%s> [%s] %s', 'white', 'cyan', $type, $title);
             } else {
-                $expected = sprintf('<fg=%s;bg=%s> %s', 'white', 'cyan', $title);
+                $expected = \sprintf('<fg=%s;bg=%s> %s', 'white', 'cyan', $title);
             }
         } else {
             if ($type) {
-                $expected = sprintf('# [%s] %s', $type, $title);
+                $expected = \sprintf('# [%s] %s', $type, $title);
             } else {
-                $expected = sprintf('# %s', $title);
+                $expected = \sprintf('# %s', $title);
             }
         }
 
@@ -137,17 +137,17 @@ class ImagineStyleTest extends AbstractTest
      */
     public function testBlockTypes(string $type, string $expectedFormat, string $format, array $replacements, bool $decoration): void
     {
-        $blockMethod = sprintf('%sBlock', $type);
+        $blockMethod = \sprintf('%sBlock', $type);
         $style = $this->createImagineStyle($output = $this->createBufferedOutput(), $decoration);
 
         if (!\is_callable([$style, $blockMethod])) {
-            static::fail(sprintf('Required method "%s" for "%s" block type is not callable!', $blockMethod, $type));
+            static::fail(\sprintf('Required method "%s" for "%s" block type is not callable!', $blockMethod, $type));
         }
 
         $style->{$blockMethod}($format, $replacements);
         $compiled = vsprintf(strip_tags($format), $replacements);
 
-        $this->assertStringContainsString(sprintf($expectedFormat, $compiled), $output->getBuffer());
+        $this->assertStringContainsString(\sprintf($expectedFormat, $compiled), $output->getBuffer());
     }
 
     public static function provideBlockTypesData(): \Generator
@@ -181,7 +181,7 @@ class ImagineStyleTest extends AbstractTest
 
         $this->assertStringContainsString($fg ?: 'default', $output->getBuffer());
         $this->assertStringContainsString($bg ?: 'default', $output->getBuffer());
-        $this->assertStringContainsString(sprintf('(%s)', $status), strip_tags($output->getBuffer()));
+        $this->assertStringContainsString(\sprintf('(%s)', $status), strip_tags($output->getBuffer()));
     }
 
     public static function provideStatusData(): \Generator
@@ -205,7 +205,7 @@ class ImagineStyleTest extends AbstractTest
 
         $this->assertStringContainsString($fg ?: 'default', $output->getBuffer());
         $this->assertStringContainsString($bg ?: 'default', $output->getBuffer());
-        $this->assertStringContainsString(sprintf('%s[%s]', $item, $group), strip_tags($output->getBuffer()));
+        $this->assertStringContainsString(\sprintf('%s[%s]', $item, $group), strip_tags($output->getBuffer()));
     }
 
     public static function provideGroupData(): \Generator
@@ -213,7 +213,7 @@ class ImagineStyleTest extends AbstractTest
         foreach (static::getConsoleColors() as $color) {
             for ($i = 1; $i < 10; $i += 3) {
                 for ($j = 1000; $j < 1004; ++$j) {
-                    yield [sprintf('item-%s', $i), sprintf('group-%s', $j), $color, $color];
+                    yield [\sprintf('item-%s', $i), \sprintf('group-%s', $j), $color, $color];
                 }
             }
         }

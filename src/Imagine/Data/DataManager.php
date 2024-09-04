@@ -41,7 +41,7 @@ class DataManager
         MimeTypesInterface $extensionGuesser,
         FilterConfiguration $filterConfig,
         ?string $defaultLoader = null,
-        ?string $globalDefaultImage = null
+        ?string $globalDefaultImage = null,
     ) {
         $this->mimeTypeGuesser = $mimeTypeGuesser;
         $this->filterConfig = $filterConfig;
@@ -70,7 +70,7 @@ class DataManager
         $loaderName = empty($config['data_loader']) ? $this->defaultLoader : $config['data_loader'];
 
         if (!\array_key_exists($loaderName, $this->loaders)) {
-            throw new \InvalidArgumentException(sprintf('Could not find data loader "%s" for "%s" filter type', $loaderName, $filter));
+            throw new \InvalidArgumentException(\sprintf('Could not find data loader "%s" for "%s" filter type', $loaderName, $filter));
         }
 
         return $this->loaders[$loaderName];
@@ -98,11 +98,11 @@ class DataManager
         }
 
         if (null === $binary->getMimeType()) {
-            throw new LogicException(sprintf('The mime type of image %s was not guessed.', $path));
+            throw new LogicException(\sprintf('The mime type of image %s was not guessed.', $path));
         }
 
         if (0 !== mb_strpos($binary->getMimeType(), 'image/') && 'application/pdf' !== $binary->getMimeType()) {
-            throw new LogicException(sprintf('The mime type of file %s must be image/xxx or application/pdf, got %s.', $path, $binary->getMimeType()));
+            throw new LogicException(\sprintf('The mime type of file %s must be image/xxx or application/pdf, got %s.', $path, $binary->getMimeType()));
         }
 
         return $binary;

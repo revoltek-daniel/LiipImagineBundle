@@ -42,7 +42,7 @@ class FilterService
         CacheManager $cacheManager,
         bool $webpGenerate = false,
         array $webpOptions = [],
-        ?LoggerInterface $logger = null
+        ?LoggerInterface $logger = null,
     ) {
         $this->dataManager = $dataManager;
         $this->filterManager = $filterManager;
@@ -79,7 +79,7 @@ class FilterService
         string $path,
         string $filter,
         ?string $resolver = null,
-        bool $forced = false
+        bool $forced = false,
     ): bool {
         $warmedUp = false;
 
@@ -106,7 +106,7 @@ class FilterService
         string $filter,
         array $runtimeFilters = [],
         ?string $resolver = null,
-        bool $webpSupported = false
+        bool $webpSupported = false,
     ): string {
         $runtimePath = $this->cacheManager->getRuntimePath($path, $runtimeFilters);
         $runtimeOptions = [
@@ -146,7 +146,7 @@ class FilterService
         FilterPathContainer $filterPathContainer,
         string $filter,
         ?string $resolver = null,
-        bool $webpSupported = false
+        bool $webpSupported = false,
     ): string {
         $path = $filterPathContainer->getTarget();
 
@@ -166,7 +166,7 @@ class FilterService
         FilterPathContainer $filterPathContainer,
         string $filter,
         ?string $resolver = null,
-        bool $forced = false
+        bool $forced = false,
     ): bool {
         if ($forced || !$this->cacheManager->isStored($filterPathContainer->getTarget(), $filter, $resolver)) {
             $this->cacheManager->store(
@@ -192,7 +192,7 @@ class FilterService
         try {
             return $this->filterManager->applyFilter($binary, $filter, $filterPathContainer->getOptions());
         } catch (NonExistingFilterException $e) {
-            $this->logger->debug(sprintf(
+            $this->logger->debug(\sprintf(
                 'Could not locate filter "%s" for path "%s". Message was "%s"',
                 $filter,
                 $filterPathContainer->getSource(),

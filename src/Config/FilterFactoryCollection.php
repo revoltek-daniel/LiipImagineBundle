@@ -34,7 +34,7 @@ class FilterFactoryCollection
     public function getFilterFactoryByName(string $name): FilterFactoryInterface
     {
         if (!\array_key_exists($name, $this->filterFactories)) {
-            throw new NotFoundException(sprintf("Filter factory with name '%s' was not found.", $name));
+            throw new NotFoundException(\sprintf("Filter factory with name '%s' was not found.", $name));
         }
 
         return $this->filterFactories[$name];

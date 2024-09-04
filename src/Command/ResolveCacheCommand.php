@@ -113,7 +113,7 @@ EOF
                 $this->io->status('cached', 'white');
             }
 
-            $this->io->line(sprintf(' %s', $this->cacheManager->resolve($image, $filter)));
+            $this->io->line(\sprintf(' %s', $this->cacheManager->resolve($image, $filter)));
         } catch (\Exception $e) {
             ++$this->failures;
 

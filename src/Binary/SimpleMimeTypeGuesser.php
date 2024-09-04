@@ -25,7 +25,7 @@ class SimpleMimeTypeGuesser implements MimeTypeGuesserInterface
     public function guess(string $binary): ?string
     {
         if (false === $tmpFile = tempnam(sys_get_temp_dir(), 'liip-imagine-bundle')) {
-            throw new \RuntimeException(sprintf('Temp file can not be created in "%s".', sys_get_temp_dir()));
+            throw new \RuntimeException(\sprintf('Temp file can not be created in "%s".', sys_get_temp_dir()));
         }
 
         try {

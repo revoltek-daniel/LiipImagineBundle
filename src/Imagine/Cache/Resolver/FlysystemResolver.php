@@ -44,7 +44,7 @@ class FlysystemResolver implements ResolverInterface
         RequestContext $requestContext,
         string $rootUrl,
         string $cachePrefix = 'media/cache',
-        string $visibility = AdapterInterface::VISIBILITY_PUBLIC
+        string $visibility = AdapterInterface::VISIBILITY_PUBLIC,
     ) {
         $this->flysystem = $flysystem;
         $this->requestContext = $requestContext;
@@ -75,7 +75,7 @@ class FlysystemResolver implements ResolverInterface
      */
     public function resolve(string $path, string $filter): string
     {
-        return sprintf(
+        return \sprintf(
             '%s/%s',
             rtrim($this->webRoot, '/'),
             ltrim($this->getFileUrl($path, $filter), '/')

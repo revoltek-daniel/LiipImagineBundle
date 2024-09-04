@@ -25,7 +25,7 @@ class FlysystemV2Loader implements LoaderInterface
 
     public function __construct(
         MimeTypesInterface $extensionGuesser,
-        FilesystemOperator $filesystem
+        FilesystemOperator $filesystem,
     ) {
         $this->extensionGuesser = $extensionGuesser;
         $this->filesystem = $filesystem;
@@ -44,7 +44,7 @@ class FlysystemV2Loader implements LoaderInterface
                 $extension
             );
         } catch (FilesystemException $exception) {
-            throw new NotLoadableException(sprintf('Source image "%s" not found.', $path), 0, $exception);
+            throw new NotLoadableException(\sprintf('Source image "%s" not found.', $path), 0, $exception);
         }
     }
 

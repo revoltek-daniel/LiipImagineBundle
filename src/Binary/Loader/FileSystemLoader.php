@@ -27,7 +27,7 @@ class FileSystemLoader implements LoaderInterface
     public function __construct(
         MimeTypeGuesserInterface $mimeGuesser,
         MimeTypesInterface $extensionGuesser,
-        LocatorInterface $locator
+        LocatorInterface $locator,
     ) {
         $this->mimeTypeGuesser = $mimeGuesser;
         $this->extensionGuesser = $extensionGuesser;

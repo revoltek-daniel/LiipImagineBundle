@@ -232,7 +232,7 @@ final class FilterServiceTest extends TestCase
         $this->logger
             ->expects($this->once())
             ->method('debug')
-            ->with(sprintf(
+            ->with(\sprintf(
                 'Could not locate filter "%s" for path "%s". Message was "%s"',
                 self::FILTER,
                 self::SOURCE_IMAGE,
@@ -330,7 +330,7 @@ final class FilterServiceTest extends TestCase
         $this->logger
             ->expects($this->once())
             ->method('debug')
-            ->with(sprintf(
+            ->with(\sprintf(
                 'Could not locate filter "%s" for path "%s". Message was "%s"',
                 self::FILTER,
                 self::SOURCE_IMAGE,
@@ -462,7 +462,7 @@ final class FilterServiceTest extends TestCase
         $this->logger
             ->expects($this->once())
             ->method('debug')
-            ->with(sprintf(
+            ->with(\sprintf(
                 'Could not locate filter "%s" for path "%s". Message was "%s"',
                 self::FILTER,
                 self::SOURCE_IMAGE,

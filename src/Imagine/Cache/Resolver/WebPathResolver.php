@@ -32,7 +32,7 @@ class WebPathResolver implements ResolverInterface
         Filesystem $filesystem,
         RequestContext $requestContext,
         string $webRootDir,
-        string $cachePrefix = 'media/cache'
+        string $cachePrefix = 'media/cache',
     ) {
         $this->filesystem = $filesystem;
         $this->requestContext = $requestContext;
@@ -44,7 +44,7 @@ class WebPathResolver implements ResolverInterface
 
     public function resolve(string $path, string $filter): string
     {
-        return sprintf('%s/%s',
+        return \sprintf('%s/%s',
             rtrim($this->getBaseUrl(), '/'),
             ltrim($this->getFileUrl($path, $filter), '/')
         );
@@ -114,7 +114,7 @@ class WebPathResolver implements ResolverInterface
         }
         $baseUrl = rtrim($baseUrl, '/\\');
 
-        return sprintf('%s://%s%s%s',
+        return \sprintf('%s://%s%s%s',
             $this->requestContext->getScheme(),
             $this->requestContext->getHost(),
             $port,

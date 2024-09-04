@@ -30,7 +30,7 @@ final class RelativeResize extends FilterAbstract
         ?float $heighten = null,
         ?float $widen = null,
         ?float $increase = null,
-        ?float $scale = null
+        ?float $scale = null,
     ) {
         $this->heighten = $heighten;
         $this->widen = $widen;

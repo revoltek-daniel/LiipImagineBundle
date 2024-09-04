@@ -91,7 +91,7 @@ class PngquantPostProcessor extends AbstractPostProcessor
             }
 
             $arguments[] = '--quality';
-            $arguments[] = sprintf('%d-%d', $quality[0], $quality[1]);
+            $arguments[] = \sprintf('%d-%d', $quality[0], $quality[1]);
         }
 
         if (\array_key_exists('speed', $options) && null !== $options['speed']) {

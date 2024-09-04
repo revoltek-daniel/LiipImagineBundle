@@ -260,12 +260,12 @@ EOF;
 
     private function assertAlias(string $value, string $key): void
     {
-        $this->assertSame($value, (string) $this->containerBuilder->getAlias($key), sprintf('%s alias is correct', $key));
+        $this->assertSame($value, (string) $this->containerBuilder->getAlias($key), \sprintf('%s alias is correct', $key));
     }
 
     private function assertParameter(string $value, string $key): void
     {
-        $this->assertSame($value, $this->containerBuilder->getParameter($key), sprintf('%s parameter is correct', $key));
+        $this->assertSame($value, $this->containerBuilder->getParameter($key), \sprintf('%s parameter is correct', $key));
     }
 
     private function assertHasDefinition(string $id): void
@@ -285,7 +285,7 @@ EOF;
         };
 
         $implodeArrayElements = function (array $a): string {
-            return sprintf('[%s]:%d', implode(',', $a), \count($a));
+            return \sprintf('[%s]:%d', implode(',', $a), \count($a));
         };
 
         $expectedArguments = $castArrayElementsToString($arguments);
