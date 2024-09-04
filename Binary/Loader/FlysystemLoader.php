@@ -39,7 +39,7 @@ class FlysystemLoader implements LoaderInterface
         }
 
         if (interface_exists(MimeTypesInterface::class) && $extensionGuesser instanceof DeprecatedExtensionGuesserInterface) {
-            @trigger_error(sprintf('Passing a %s to "%s()" is deprecated since Symfony 4.3, pass a "%s" instead.', DeprecatedExtensionGuesserInterface::class, __METHOD__, MimeTypesInterface::class), E_USER_DEPRECATED);
+            @trigger_error(\sprintf('Passing a %s to "%s()" is deprecated since Symfony 4.3, pass a "%s" instead.', DeprecatedExtensionGuesserInterface::class, __METHOD__, MimeTypesInterface::class), E_USER_DEPRECATED);
         }
 
         $this->extensionGuesser = $extensionGuesser;
@@ -49,7 +49,7 @@ class FlysystemLoader implements LoaderInterface
     public function find($path)
     {
         if (false === $this->filesystem->has($path)) {
-            throw new NotLoadableException(sprintf('Source image "%s" not found.', $path));
+            throw new NotLoadableException(\sprintf('Source image "%s" not found.', $path));
         }
 
         $mimeType = $this->filesystem->getMimetype($path);

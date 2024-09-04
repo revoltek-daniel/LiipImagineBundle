@@ -102,7 +102,7 @@ class AmazonS3Resolver implements ResolverInterface
         }
 
         if (empty($paths)) {
-            if (!$this->storage->delete_all_objects($this->bucket, sprintf('/%s/i', implode('|', $filters)))) {
+            if (!$this->storage->delete_all_objects($this->bucket, \sprintf('/%s/i', implode('|', $filters)))) {
                 $this->logError('The objects could not be deleted from Amazon S3.', [
                     'filters' => implode(', ', $filters),
                     'bucket' => $this->bucket,
