@@ -38,7 +38,7 @@ class ImagineController
         FilterService $filterService,
         DataManager $dataManager,
         SignerInterface $signer,
-        ControllerConfig $controllerConfig
+        ControllerConfig $controllerConfig,
     ) {
         $this->filterService = $filterService;
         $this->dataManager = $dataManager;

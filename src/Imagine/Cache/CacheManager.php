@@ -49,7 +49,7 @@ class CacheManager
         SignerInterface $signer,
         EventDispatcherInterface $dispatcher,
         ?string $defaultResolver = null,
-        bool $webpGenerate = false
+        bool $webpGenerate = false,
     ) {
         $this->filterConfig = $filterConfig;
         $this->router = $router;

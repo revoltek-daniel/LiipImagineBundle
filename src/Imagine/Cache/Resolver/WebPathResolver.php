@@ -32,7 +32,7 @@ class WebPathResolver implements ResolverInterface
         Filesystem $filesystem,
         RequestContext $requestContext,
         string $webRootDir,
-        string $cachePrefix = 'media/cache'
+        string $cachePrefix = 'media/cache',
     ) {
         $this->filesystem = $filesystem;
         $this->requestContext = $requestContext;

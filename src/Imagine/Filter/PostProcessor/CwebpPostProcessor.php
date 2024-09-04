@@ -102,7 +102,7 @@ class CwebpPostProcessor extends AbstractPostProcessor
         ?string $alphaFilter = null,
         ?int $alphaMethod = null,
         ?bool $exact = null,
-        array $metadata = []
+        array $metadata = [],
     ) {
         parent::__construct($executablePath, $temporaryRootPath);
 

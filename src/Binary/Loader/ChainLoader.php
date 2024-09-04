@@ -52,11 +52,11 @@ class ChainLoader implements LoaderInterface
     private static function getLoaderExceptionMessage(string $path, array $exceptions, array $loaders): string
     {
         $loaderMessages = array_map(static function (string $name, LoaderInterface $loader): string {
-            return sprintf('%s=[%s]', (new \ReflectionObject($loader))->getShortName(), $name);
+            return \sprintf('%s=[%s]', (new \ReflectionObject($loader))->getShortName(), $name);
         }, array_keys($loaders), $loaders);
 
         $exceptionMessages = array_map(static function (string $message, LoaderInterface $loader): string {
-            return sprintf('%s=[%s]', (new \ReflectionObject($loader))->getShortName(), $message);
+            return \sprintf('%s=[%s]', (new \ReflectionObject($loader))->getShortName(), $message);
         }, array_keys($exceptions), $exceptions);
 
         return vsprintf('Source image not resolvable "%s" using "%s" %d loaders (internal exceptions: %s).', [

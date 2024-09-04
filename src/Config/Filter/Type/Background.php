@@ -37,7 +37,7 @@ final class Background extends FilterAbstract
         ?string $color,
         ?string $transparency,
         ?string $position,
-        Size $size
+        Size $size,
     ) {
         $this->color = $color;
         $this->transparency = $transparency;

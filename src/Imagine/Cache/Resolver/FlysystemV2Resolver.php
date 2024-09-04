@@ -45,7 +45,7 @@ class FlysystemV2Resolver implements ResolverInterface
         RequestContext $requestContext,
         string $rootUrl,
         string $cachePrefix = 'media/cache',
-        string $visibility = Visibility::PUBLIC
+        string $visibility = Visibility::PUBLIC,
     ) {
         $this->flysystem = $flysystem;
         $this->requestContext = $requestContext;
