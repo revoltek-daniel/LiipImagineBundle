@@ -61,14 +61,14 @@ final class ImagineStyle
     public function status(string $status, ?string $fg = null): self
     {
         return $this->text(
-            sprintf('<fg=%2$s>(</><fg=%2$s;options=bold>%1$s</><fg=%2$s>)</>', $status, $fg ?: 'default')
+            \sprintf('<fg=%2$s>(</><fg=%2$s;options=bold>%1$s</><fg=%2$s>)</>', $status, $fg ?: 'default')
         );
     }
 
     public function group(string $item, string $group, ?string $fg = null): self
     {
         $this->text(
-            sprintf('<fg=%3$s;options=bold>%1$s[</><fg=%3$s>%2$s</><fg=%3$s;options=bold>]</>', $item, $group, $fg ?: 'default')
+            \sprintf('<fg=%3$s;options=bold>%1$s[</><fg=%3$s>%2$s</><fg=%3$s;options=bold>]</>', $item, $group, $fg ?: 'default')
         );
 
         return $this->space();
@@ -122,7 +122,7 @@ final class ImagineStyle
             return $this->plainBlock($string, $type);
         }
 
-        $this->io->block($string, $type, sprintf('fg=%s;bg=%s', $fg ?: 'default', $bg ?: 'default'), $prefix ? sprintf(' %s ', $prefix) : ' ', $padding);
+        $this->io->block($string, $type, \sprintf('fg=%s;bg=%s', $fg ?: 'default', $bg ?: 'default'), $prefix ? \sprintf(' %s ', $prefix) : ' ', $padding);
 
         return $this;
     }
@@ -152,6 +152,6 @@ final class ImagineStyle
         } catch (\ValueError $error) {
         }
 
-        throw new InvalidArgumentException(sprintf('Invalid string format "%s" or replacements "%s".', $format, implode(', ', array_map(function ($replacement) { return var_export($replacement, true); }, $replacements))));
+        throw new InvalidArgumentException(\sprintf('Invalid string format "%s" or replacements "%s".', $format, implode(', ', array_map(function ($replacement) { return var_export($replacement, true); }, $replacements))));
     }
 }

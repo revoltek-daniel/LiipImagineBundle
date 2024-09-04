@@ -50,7 +50,7 @@ class FlysystemV2Loader implements LoaderInterface
                 $extension
             );
         } catch (FilesystemException $exception) {
-            throw new NotLoadableException(sprintf('Source image "%s" not found.', $path), 0, $exception);
+            throw new NotLoadableException(\sprintf('Source image "%s" not found.', $path), 0, $exception);
         }
     }
 

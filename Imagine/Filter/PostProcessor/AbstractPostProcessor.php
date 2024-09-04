@@ -105,7 +105,7 @@ abstract class AbstractPostProcessor implements PostProcessorInterface
         }
 
         if (false === $file = @tempnam($root, $prefix ?: 'post-processor')) {
-            throw new \RuntimeException(sprintf('Temporary file cannot be created in "%s"', $root));
+            throw new \RuntimeException(\sprintf('Temporary file cannot be created in "%s"', $root));
         }
 
         return $file;
@@ -132,7 +132,7 @@ abstract class AbstractPostProcessor implements PostProcessorInterface
 
     protected function triggerSetterMethodDeprecation(string $method): void
     {
-        @trigger_error(sprintf('The %s() method was deprecated in 2.2 and will be removed in 3.0. You must '
+        @trigger_error(\sprintf('The %s() method was deprecated in 2.2 and will be removed in 3.0. You must '
             .'setup the class state via its __construct() method. You can still pass filter-specific options to the '.
             'process() method to overwrite behavior.', $method), E_USER_DEPRECATED);
     }

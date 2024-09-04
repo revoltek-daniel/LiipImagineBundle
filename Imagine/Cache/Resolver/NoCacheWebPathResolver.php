@@ -42,7 +42,7 @@ class NoCacheWebPathResolver implements ResolverInterface
             $port = ":{$this->requestContext->getHttpPort()}";
         }
 
-        return sprintf('%s://%s%s/%s',
+        return \sprintf('%s://%s%s/%s',
             $this->requestContext->getScheme(),
             $this->requestContext->getHost(),
             $port,
